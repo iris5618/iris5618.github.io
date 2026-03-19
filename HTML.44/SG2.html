@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我是歌手</title>
+    <!-- 引入 Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+    body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+    header {
+        background-color: #2c3e50;
+        color: white;
+        text-align: center;
+        padding:3px 20px 7px 20px;
+    }
+
+    header a {
+      color: #E0E1DD;
+      text-decoration:none;
+      
+    }
+    header a:hover{
+      text-decoration:none;
+      color:#0D1B2A;
+      background-color:#e6e1e0;
+      broder:5px solid #E0E1DD;
+      padding:10px;
+      transform: scale(1.3);
+    }
+        .container {
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .bio {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        .bio img {
+            border-radius: 10px;
+            width: 200px;
+            height: 200px;
+            margin-right: 20px;
+        }
+        .bio div {
+            max-width: 600px;
+        }
+        .bio h2 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .music, .social {
+            margin-top: 30px;
+        }
+        .music ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .music li {
+            margin: 10px 0;
+        }
+        .music button {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            text-align: left;
+            box-sizing: border-box;
+        }
+        .music button:hover {
+            background-color: #2980b9;
+        }
+        .music iframe {
+            width: 100%;
+            height: 400px;
+            margin-top: 20px;
+            display: none;
+        }
+        .social ul {
+            list-style-type: none;
+            padding: 3px 10px 5vw 10px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .social li {
+            display: inline-block;
+        }
+        .social a {
+            font-size: 30px;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+        .social a:hover {
+            color: #3498db;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+          /* 歌手 */
+      .singer {
+        display: inline-block;
+        
+        margin: 10px;
+        text-align: center;
+        border:solid 2px #1b263b;
+        border-radius: 100px;
+        padding:20px;
+        margin:10px;
+      }
+  
+      .singer img {
+        width: 90px;
+        height: 90px;
+        border-radius: 100px;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+  
+      .singer img:hover {
+        transform: scale(1.1);
+      }    
+
+      .singer a{
+        font-size: 20px;
+        color: #0a0a0a;
+        padding: 0 10px;
+        margin: 7px;
+      }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>MAMAMOO</h1>
+    <h2><a href="index.html">I SAY MAMA MAMA HOME</a></h2>
+</header>
+
+<div class="container">
+    <!-- 歌手簡介區域 -->
+    <section class="bio">
+        <img src="2.jpg" alt="歌手照片">
+        <div>
+            <h2>歌手簡介</h2>
+            <p>
+                MAMAMOO是韓國RBW旗下四人KPOP女子團體，成員為頌樂、玟星、輝人及華莎。2014年6月19日，以歌曲《Mr.曖昧模糊》於M Countdown出道。團名中的「MAMA」是指不論種族或國家的所有初生嬰兒學會的第一句詞彙，意即MAMAMOO期望為大眾帶來跨越國籍、性別，展現原始以及本能性的音樂。            </p>
+        </div>
+    </section>
+
+    <!-- 音樂作品區域 -->
+    <section>
+        <h2>成員</h2>
+        <div class="singer">
+            <a><img src="ma1.jpg" alt="歌手 1 ">Solar</a></div>
+        <div class="singer">
+            <a><img src="ma2.jpg" alt="歌手 2 ">Moonbyul</a></div>
+        <div class="singer">
+            <a><img src="ma3.jpg" alt="歌手 3 ">Wheein</a></div>
+        <div class="singer">
+            <a><img src="ma4.jpg" alt="歌手 4 ">Hwasa</a></div>    
+    </section>
+
+    <section class="music">
+        <h2>音樂作品</h2>
+        <ul>
+            <li><button onclick="playMusic('video1')">Yellow Flowers</button></li>
+            <li><button onclick="playMusic('video2')">BLUE;S</button></li>
+            <li><button onclick="playMusic('video3')">White Wind</button></li>
+        </ul>
+
+        <!-- 音樂影片區域 -->
+        <iframe id="video1" src="https://youtube.com/playlist?list=OLAK5uy_kYQHVkyj6dc91OTSiqK2HSFjWLPUb2TqI&si=ohCq44V0kV3cE4Cm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe id="video2" src="https://youtube.com/playlist?list=OLAK5uy_mXoss_wLsglcoWM-bUKhXBlGKTcMjZsHk&si=rSCRp21hT8w9Bj8m" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;" allowfullscreen></iframe> 
+        <iframe id="video3" src="https://youtube.com/playlist?list=OLAK5uy_mreD78re1_5GmDzGi2p11A13426ychi6g&si=" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </section>
+
+    <section class="social">
+        <ul>
+            <li><a href="https://www.instagram.com/mamamoo_official/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://www.youtube.com/channel/UCuhAUMLzJxlP1W7mEk0_6lA" target="_blank"><i class="fab fa-youtube"></i></a></li>
+        </ul>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; Iris</p>
+</footer>
+
+<script>
+    // 播放對應的音樂影片
+    function playMusic(videoId) {
+        // 隱藏所有影片
+        document.getElementById('video1').style.display = 'none';
+        document.getElementById('video2').style.display = 'none';
+        document.getElementById('video3').style.display = 'none';
+        
+        // 顯示對應的影片
+        document.getElementById(videoId).style.display = 'block';
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日一音</title>
+  <style>
+
+    body {
+    font-family: Arial, sans-serif;
+    background-color:  #000E2B;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    }
+    header {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding:3px 20px 40px 20px;
+    }
+    header ul{
+      position:absolute;
+      left:20vw;
+      right:20vw;
+      bottom:10;
+      line-height:10px;
+      align:center;
+    }
+    header li{
+      display:inline;
+      margin-right:4vw;
+    }
+    header a {
+      color: #E0E1DD;
+      text-decoration:none;
+      
+    }
+    header a:hover{
+      text-decoration:none;
+      color:#0D1B2A;
+      background-color:#e6e1e0;
+      broder:5px solid #E0E1DD;
+      padding:10px;
+      transform: scale(1.3);
+    }
+        
+  section {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffffab;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+    }
+  
+  h2 {
+    color: #050505;
+    font-size: 24px;
+    margin-bottom: 20px;
+    }
+  
+  .daily-song img,
+  .playlist-item img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .daily-song p,
+  .playlist-item p {
+    color: #000000;
+    font-size: 18px;
+    margin: 10px 0;
+    font-weight: bold;
+  }
+  
+  audio {
+    width: 100%;
+    margin-top: 15px;
+  }
+  
+  .button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+  }
+  /* 頁尾 */
+footer {
+    font-family: Times New Roman, sans-serif;
+    text-align: center;
+    padding: 1px 0 0 0;
+    background-color: #0D1B2A;
+    color: white;
+    position: relative;
+}
+
+  /* 回到最初的起點 */
+.back-to-top {
+    display: inline-block;
+    margin-top: 10px;
+    color: #ffcc00;
+    text-decoration: none;
+    font-size: 14px;
+}  
+  </style>
+</head>
+<body>
+  <header>
+    <!-- 首頁 -->
+    <h1><a href="index.html">你說家是唯一的城堡</a></h1>
+    
+    <!-- 搜尋框容器 -->
+    <CENTER>
+    <!-- 下面那一排 -->
+      <ul>
+        <li><a href="comment.html">音緣祭會</a></li>
+        <li><a href="DaylyMusic.html">每日一音</a></li>
+      </ul>
+      
+    </CENTER>
+  </header>
+  <section>
+    <h2>今日推薦</h2>
+    <div class="daily-song">
+      <img id="song-cover" src="" alt="今日歌曲封面">
+      <p id="song-title"></p>
+      <audio controls id="audio-player">
+        <source id="audio-source" src="" type="audio/mpeg">
+        您的瀏覽器不支援音樂播放。
+      </audio>
+    </div>
+  </section>
+
+
+  <footer>
+    <p>&copy; Iris</p>
+    <a href="#top" class="back-to-top">[BACK TO TOP]</a>
+  </footer>
+
+  <script>
+      // 歌曲資料
+    const songs = [
+      {
+        title: "周杰倫 - 反方向的鐘",
+        cover: "反方向的鐘.jpg",
+        audio: "反方向的鐘.mp3"
+      },
+      {
+        title: "MAMAMOO - Starry night",
+        cover: "Starry night.jpg",
+        audio: "Starry night.mp3"
+      },
+      {
+        title: "HYBS - Tip Toe",
+        cover: "Tip Toe.jpg",
+        audio: "Tip Toe.mp3"
+      }
+    ];
+    
+    // 動態更新每日推薦
+    if (document.title === "每日一音") {
+      const today = new Date();
+      const index = today.getDate() % songs.length;
+      const selectedSong = songs[index];
+    
+      document.getElementById("song-cover").src = selectedSong.cover;
+      document.getElementById("song-title").textContent = `${selectedSong.title}`;
+      document.getElementById("audio-source").src = selectedSong.audio;
+      document.getElementById("audio-player").load();
+    } 
+  </script>
+
+</body>
+</html>

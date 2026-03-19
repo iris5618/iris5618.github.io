@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>音樂推薦網站</title>
+  <link rel="stylesheet" href="indexstyle.css">
+  <style class="indexstyle.css">
+    body {
+      font-family: Arial, sans-serif;
+      background-color:  #000E2B;
+      color: white;
+      margin: 0;
+      padding: 0;
+      }
+    header {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding:3px 20px 40px 20px;
+      }
+    header ul{
+      position:absolute;
+      left:20vw;
+      right:20vw;
+      bottom:10;
+      line-height:10px;
+      align:center;
+    }
+    header li{
+      display:inline;
+      margin-right:4vw;
+    }
+    header a {
+      color: #E0E1DD;
+      text-decoration:none;
+    }
+    header a:hover{
+      text-decoration:none;
+      color:#0D1B2A;
+      background-color:#e6e1e0;
+      broder:5px solid #E0E1DD;
+      padding:10px;
+      transform: scale(1.3);
+    }
+        
+    h2 fieldset{
+      background-color: #2c3e50;
+      padding:5px;
+      margin: 5px;
+    }
+    main fieldset{
+      padding: 5px;
+      margin: 5px;
+    }
+  </style>
+</head>
+  <!---------------------------------------------------------------------->
+<body>
+  <header>
+    <!-- 首頁 -->
+    <h1><a href="index.html">音樂推薦網站</a></h1>
+    
+    <!-- 搜尋框容器 -->
+    <CENTER>
+    <div class="search-container">
+      <input type="text" class="search-box" placeholder="搜尋..." id="search">
+      <span class="search-icon" onclick="searchAction()">🔍</span>
+    </div>
+    <!-- 下面那一排 -->
+      <ul>
+        <li><a href="comment.html">音緣祭會</a></li>
+        <li><a href="DaylyMusic.html">每日一音</a></li>
+      </ul>
+      
+    </CENTER>
+  </header>
+  
+  <main>
+
+    <!-- 歌手SG -->
+    <section><fieldset>
+    <h2><fieldset>歌手</fieldset></h2>
+    <div class="singer">
+        <a href="SG1.html"><img src="1.jfif" alt="歌手 1 "></a>
+        <p>周杰倫</p>
+      </div>
+    <div class="singer">
+        <a href="SG2.html"><img src="2.jpg_large.jpg" alt="歌手 2 "></a>
+        <p>MAMAMOO</p>
+      </div>
+    <div class="singer">
+        <a href="SG3.html"><img src="3.jfif" alt="歌手 3 "></a>
+        <p>HYBS</p>
+      </div>
+  
+    </fieldset></section>
+
+    <fieldset><section>      
+    <!-- 專輯SG*A -->
+    <h2><fieldset>推薦專輯</fieldset></h2>
+    <div class="marquee-container">
+		<div class="marquee-content">
+        <p>這是我做的音樂推薦網站 蠢手工請見諒</p>
+        </div>
+     </div>
+
+    <div class="album">
+        <a href="SG1A.html"><img src="11.jfif" alt="歌手 1 專輯"></a>
+        <p>十一月的蕭邦</p>
+      </div>
+    <div class="album">
+        <a href="SG2A.html"><img src="22.jfif" alt="歌手 2 專輯"></a>
+        <p>I SAY MAMAMOO : THE BEST</p>
+      </div>
+    <div class="album">
+        <a href="SG3A.html"><img src="33.jfif" alt="歌手 3 專輯"></a>
+        <p>Making Steak</p>
+      </div>
+    </section></fieldset>
+    <fieldset><section>
+    <h2><fieldset>留言區</fieldset></h2>
+    <CENTER><div class="comment-container">
+      <textarea class="comment-box" id="comment" placeholder="淺而意見"></textarea>
+      <button class="submit-btn" onclick="submitComment()">我幫泥送</button>
+    </div></CENTER>
+
+    </section></fieldset>  
+  <!-- 送出完成後彈出視窗 -->
+  
+  <div class="popup" id="popup">
+    <p>! 老師請不要當我！</p>
+    <button class="close-btn" onclick="closePopup()">確定</button>
+  </div>
+
+  <script>
+      function searchAction() {
+      const query = document.getElementById('search').value;
+      if (query.trim()) {
+        alert('搜尋內容: ' + query);
+        // 這裡可以連接到實際的搜尋功能
+      } else {
+        alert('請輸入搜尋內容');
+      }
+    }
+    function submitComment() {
+      // 模擬留言送出，顯示彈出視窗
+      const comment = document.getElementById('comment').value;
+      if (comment.trim() !== "") {
+        // 顯示彈出視窗
+        document.getElementById('popup').classList.add('active');
+        // 清空留言框
+        document.getElementById('comment').value = "";
+      } else {
+        alert('請輸入留言內容');
+      }
+    }
+
+    function closePopup() {
+      // 關閉彈出視窗
+      document.getElementById('popup').classList.remove('active');
+    }
+  </script>
+  </main>
+  
+  <footer>
+    <p>&copy; Iris</p>
+    <a href="#top" class="back-to-top">[BACK TO TOP]</a>
+  </footer>
+</body>
+</html>

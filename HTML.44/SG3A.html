@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>專輯</title>
+  <style>
+    /* 身體 */
+    body {
+      font-family: Times New Roman, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000E2B;
+      color: black;
+    }
+    
+    /* 頁首 */
+    header {
+      background-color: #013B63;
+      color: #E0E1DD;
+      padding: 3px 20px 40px 20px;
+      text-align: center;
+    }
+    header ul {
+      position: absolute;
+      left: 20vw;
+      right: 20vw;
+      bottom: 10;
+      line-height: 10px;
+      align-self: center;
+    }
+    header li {
+      display: inline;
+      margin-right: 4vw;
+    }
+    header a {
+      color: #E0E1DD;
+      text-decoration: none;
+    }
+    header a:hover {
+      text-decoration: none;
+      color: #0D1B2A;
+      background-color: #e6e1e0;
+      padding: 10px;
+      transform: scale(1.3);
+    }
+
+    .mian{
+      color: #E0E1DD;
+      padding: 20vw 20vw 40vw 20vw;
+		  margin:10vw 0px 0px 10px;
+    }
+    .mian singer {
+      display: inline-block;
+      border-radius: 100px;
+      margin: 15px;
+      text-align: center;
+      border:solid 2px #1b263b;
+		  background:#415a77;
+		  padding: 20vw 20vw 40vw 20vw;
+		  margin:10vw 0vw 0px 0px;
+    }
+    .mian img {
+      padding: 0px 20vw 40vw 20vw;
+      margin:10vw 0vw 0px 0px;
+      width: 150px;
+      height: 150px;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .mian img:hover {
+      transform: scale(1.1);
+    } 
+
+    
+    /* 頁尾 */
+    footer {
+      font-family: Times New Roman, sans-serif;
+      text-align: center;
+      padding: 10px;
+      background-color: #0D1B2A;
+      color: white;
+      position: relative;
+    }
+    /* 回到最初的起點 */
+    .back-to-top {
+        display: inline-block;
+        margin-top: 10px;
+        color: #ffcc00;
+        text-decoration: none;
+        font-size: 14px;
+      }
+    
+    .container{
+      color: #ffffff;
+      font-size: larger;
+    }
+
+
+    /* 主要區域 */
+    section {
+      padding: 30px 20px;
+    }
+
+    /* 音樂項目 */
+    .music-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      margin: 3vw;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .music-item:last-child {
+      border-bottom: none;
+    }
+
+    /* 圖示按鈕 */
+    .music-item button {
+      background-color: #000E2B;
+      color: white;
+      border: none;
+      margin: 1px;
+      padding: 0.5vw 2px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 20px; /* 圖示大小 */
+    }
+
+    .music-item button:hover {
+      background-color: #d80a0a;
+    }
+
+    /* 播放按鈕 */
+    .play-btn::before {
+      content: '\25B6'; /* Unicode 播放圖示 */
+      font-size: 30px; /* 圖示大小 */
+    }
+
+    /* 暫停按鈕 */
+    .pause-btn::before {
+      content: '\23F8'; /* Unicode 暫停圖示 */
+      font-size: 30px; /* 圖示大小 */
+    }
+
+    /* 喜歡按鈕 */
+    .like-btn::before {
+      content: '\2764'; /* Unicode 喜歡圖示 */
+      font-size: 30px; /* 圖示大小 */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <!-- 首頁 -->
+    <h1><a href="index.html">HOME</a></h1>
+
+    <CENTER>
+      <ul>
+        <li><a href="comment.html">音緣祭會</a></li>
+        <li><a href="DaylyMusic.html">每日一音</a></li>
+      </ul>
+    </CENTER>
+  </header>
+
+  <section class="bio">
+    <center><img src="33.jfif" alt="Making Steak">
+    <div class="container">
+      <h2>Making Steak</h2>
+      <fieldset>
+      <div id="music-list">
+        <!-- Music items will be rendered here -->
+      </div>
+    </div>
+      </fieldset>
+    </center>
+  </section>
+
+  <script>
+    // Example music data
+    const musicData = [
+      { id: 1, title: "Ride", artist: "HYBS", audio: "Ride.mp3" },
+      { id: 2, title: "Would You Mind", artist: "HYBS", audio: "Would You Mind.mp3" },
+      { id: 3, title: "Dancing with my phone", artist: "HYBS", audio: "Dancing with my phone.mp3" },
+    ];
+
+    const musicList = document.getElementById('music-list');
+    let currentAudio = null; // 用來追蹤當前播放的音樂
+
+    // Function to render music list
+    function renderMusicList() {
+      musicList.innerHTML = '';
+      musicData.forEach(song => {
+        const musicItem = document.createElement('div');
+        musicItem.classList.add('music-item');
+        musicItem.innerHTML = `
+          <div><strong>${song.title}</strong></div>
+          <button class="like-btn" onclick="likeSong(${song.id})"></button>
+          <button class="play-btn" onclick="playSong('${song.audio}', '${song.title}')"></button>
+          <button class="pause-btn" onclick="pauseSong('${song.id}')"></button>
+          <audio id="audio-${song.id}" src="${song.audio}" preload="auto"></audio>
+        `;
+        musicList.appendChild(musicItem);
+      });
+    }
+
+    // Like
+    function likeSong(id) {
+      const song = musicData.find(s => s.id === id);
+      if (song) {
+        alert(`就知道你喜歡 ${song.artist} 的 ${song.title}`);
+      }
+    }
+
+    // Play
+    function playSong(audio, title) {
+      // 停止之前正在播放的音樂
+      if (currentAudio) {
+        currentAudio.pause();
+      }
+      // 播放當前選中的音樂
+      currentAudio = new Audio(audio);
+      currentAudio.play();
+      
+    }
+
+    // Pause
+    function pauseSong(id) {
+      const audioElement = document.getElementById(`audio-${id}`);
+      if (currentAudio) {
+        currentAudio.pause();
+      }
+    }
+    // Render the music list on page load
+    renderMusicList();
+  </script>
+
+  <footer>
+    <p>&copy; Iris</p>
+    <a href="#top" class="back-to-top" >[BACK TO TOP]</a>
+  </footer>
+
+</body>
+</html>
