@@ -17,7 +17,7 @@ body {
     right:20vw;
     bottom:10;
     line-height:10px;
-    align:center;
+    text-align: center;
   }
   header li{
     display:inline;
@@ -32,7 +32,7 @@ body {
     text-decoration:none;
     color:#0D1B2A;
     background-color:#e6e1e0;
-    broder:5px solid #E0E1DD;
+    border:5px solid #E0E1DD;
     padding:10px;
     transform: scale(1.3);
   }
@@ -281,5 +281,5 @@ body {
             padding: 30px 20px;
           }
           fieldset2{
-            bouder-color:#4579A0
+            border-color:#4579A0
           }
