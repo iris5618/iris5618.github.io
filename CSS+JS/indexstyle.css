@@ -11,14 +11,14 @@ body {
     text-align: center;
     padding:3px 20px 40px 20px;
   }
-  header ul{
-    position:absolute;
-    left:20vw;
-    right:20vw;
-    bottom:10;
-    line-height:10px;
-    text-align: center;
+  header ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
   }
+
   header li{
     display:inline;
     margin-right:4vw;
